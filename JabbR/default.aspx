@@ -234,28 +234,24 @@
     <div class="fluid-container">
         <div class="row-fluid">
             <nav class="span2">
-              <ul id="tabs" class="nav nav-pills nav-stacked" role="tablist">
-                <li id="tabs-lobby" class="current active lobby" data-name="Lobby" role="tab">
-                  <a href="#" accesskey="l">
-                    <span class="content">Lobby</span>
-                  </a>
-                </li>
-              </ul>
+                <ul id="tabs" class="nav nav-pills nav-stacked" role="tablist">
+                    <li id="tabs-lobby" class="current active lobby" data-name="Lobby" role="tab">
+                        <a href="#" accesskey="l">
+                            <span class="content">Lobby</span>
+                        </a>
+                    </li>
+                </ul>
             </nav>
 
-            <div class="span10">
+            <div class="span8">
                 <div id="chat-area" class="row-fluid" role="tabpanel">
-              
                     <ul id="messages-lobby" class="messages current" role="log">
                     </ul>
-          
-                    <form id="users-filter-form" action="#">
-                        <input id="users-filter" class="filter" type="text" />
-                    </form>
-          
-                    <ul id="userlist-lobby" class="users current pull-right">
-                    </ul>
-          
+                </div>
+            </div>
+
+            <div class="span2" style="margin-top: 85px;">
+                <div id="user-list-area">
                     <div id="preferences">
                         <a class="sound" title="audible notifications"></a>
                         <a class="richness" title="toggle rich-content"></a>
@@ -263,18 +259,26 @@
                         <a class="download" title="download messages" aria-haspopup="true"></a>
                     </div>
 
-                    <form id="send-message" action="#">
-                        <div id="message-box">
-                        <textarea id="new-message" autocomplete="off" aria-autocomplete="none" accesskey="m"></textarea>
-                        </div>
-                        <input type="submit" id="send" value="Send" class="send" />
-                        <div id="message-instruction">
-                        Type @ then press TAB to auto-complete nicknames
-                        </div>
+                    <form id="users-filter-form" action="#">
+                            <input id="users-filter" class="filter" type="text" />
                     </form>
+          
+                    <ul id="userlist-lobby" class="users current">
+                    </ul>
                 </div>
             </div>
 
+            <div class="span10 prepend2">
+                <form id="send-message" action="#">
+                    <div id="message-box">
+                    <textarea id="new-message" autocomplete="off" aria-autocomplete="none" accesskey="m"></textarea>
+                    </div>
+                    <input type="submit" id="send" value="Send" class="send" />
+                    <div id="message-instruction">
+                    Type @ then press TAB to auto-complete nicknames
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
     
@@ -346,7 +350,7 @@
                 "~/Scripts/jquery.KeyTips.js",
                 "~/Scripts/jquery-ui-1.8.17.min.js",
                 "~/Scripts/jquery.signalR-0.5.2.min.js")
-            .ForceRelease()
+            //.ForceRelease()
             .Render("~/Scripts/JabbR1_#.js")
   %>
   <script type="text/javascript" src='<%= ResolveClientUrl("~/signalr/hubs") %>'></script>
@@ -370,7 +374,7 @@
                 "~/Chat.pinnedWindows.js",
                 "~/Chat.githubissues.js",
                 "~/Chat.js")
-            .ForceRelease()
+            //.ForceRelease()
             .Render("~/Scripts/JabbR2_#.js")
   %>
 </body>

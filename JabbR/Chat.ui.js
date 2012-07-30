@@ -7,6 +7,7 @@
     "use strict";
 
     var $chatArea = null,
+        $userListArea = null,
         $tabs = null,
         $submitButton = null,
         $newMessage = null,
@@ -446,8 +447,8 @@
 
         if (roomName !== "lobby") {
             userContainer = $('<div/>').attr('id', 'userlist-' + roomId)
-                .addClass('users pull-right')
-                .appendTo($chatArea).hide();
+                .addClass('users')
+                .appendTo($userListArea).hide();
             templates.userlist.tmpl({ listname: '- Room Owners', id: 'userlist-' + roomId + '-owners' })
                 .addClass('owners')
                 .appendTo(userContainer);
@@ -469,7 +470,7 @@
         } else {
             $('<ul/>').attr('id', 'userlist-' + roomId)
                 .addClass('users')
-                .appendTo($chatArea).hide();
+                .appendTo($userListArea).hide();
         }
 
         $tabs.find('li')
@@ -771,6 +772,7 @@
             $ui = $(this);
             preferences = state || {};
             $chatArea = $('#chat-area');
+            $userListArea = $('#user-list-area');
             $tabs = $('#tabs');
             $submitButton = $('#send');
             $newMessage = $('#new-message');
@@ -800,8 +802,6 @@
                 $toast.show();
             }
             else {
-                $richness.css({ left: '26px' });
-                $downloadIcon.css({ left: '62px' });
                 // We need to set the toast setting to false
                 preferences.canToast = false;
             }
@@ -872,7 +872,7 @@
             });
 
             // handle click on names in chat / room list
-            var prepareMessage = function(ev) {
+            var prepareMessage = function (ev) {
                 var message = $newMessage.val().trim();
 
                 // If it was a message to another person, replace that
